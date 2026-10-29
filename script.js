@@ -218,14 +218,8 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal()
 modalForm.addEventListener("submit", async e => {
   e.preventDefault();
   const phone = document.getElementById("modalPhone").value;
-  const agree = document.getElementById("modalAgree").checked;
   if (phone.replace(/\D/g, "").length < 11) {
     modalStatus.textContent = "Введите полный номер телефона";
-    modalStatus.className = "form__status err";
-    return;
-  }
-  if (!agree) {
-    modalStatus.textContent = "Нужно согласие на обработку персональных данных";
     modalStatus.className = "form__status err";
     return;
   }
@@ -313,7 +307,6 @@ const formStatus = document.getElementById("formStatus");
 leadForm.addEventListener("submit", async e => {
   e.preventDefault();
   const email = leadForm.elements.email;
-  const agree = document.getElementById("agree");
   let ok = true;
 
   email.classList.remove("invalid");
@@ -324,12 +317,9 @@ leadForm.addEventListener("submit", async e => {
     email.setAttribute("aria-invalid", "true");
     ok = false;
   }
-  if (!agree.checked) ok = false;
 
   if (!ok) {
-    formStatus.textContent = agree.checked
-      ? "Проверьте e-mail — пример: name@company.ru"
-      : "Укажите e-mail и отметьте согласие на обработку данных.";
+    formStatus.textContent = "Проверьте e-mail — пример: name@company.ru";
     formStatus.className = "form__status err";
     email.focus();
     return;

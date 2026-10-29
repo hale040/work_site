@@ -326,6 +326,39 @@ main > .section:not(.section--dark) .section__subtitle { color: #5b6672; }
 .adv p { color: var(--muted); font-size: .9rem; }
 
 /* ===== FAQ (светлая секция — стили переопределены ниже, у тёмной базовой версии) ===== */
+/* ===== Версталка/дизайн 2 прогона: чередование секций + CTA-плашка ===== */
+/* Глубина тёмных секций: hero -> catalog (светлый) -> advantages/sro (глубокий тёмный) */
+#advantages, #sro { background: #1b2026; }
+/* «Доставка и оплата» — светлая ступень между тёмными SRO и FAQ */
+#delivery.section--dark { background: #e7ebf1; }
+#delivery .section__title, #delivery .dlv__subtitle { color: var(--text-dark); }
+#delivery .serv p, #delivery .dlv__docs li { color: #5b6672; }
+/* Акцентная CTA-плашка перед футером (была без стилей) */
+.callband { padding: 0; }
+.callband__inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  margin: 2.2rem auto 2.8rem; padding: 1.6rem 2rem;
+  background: linear-gradient(135deg, rgba(255,122,26,.14), rgba(255,122,26,.05));
+  border: 1px solid rgba(255,122,26,.35); border-left: 5px solid var(--accent);
+  border-radius: calc(var(--radius) + 2px); box-shadow: 0 10px 28px rgba(255,122,26,.12);
+}
+.callband__text h2 { font-size: 1.35rem; color: var(--text-dark); margin-bottom: .3rem; }
+.callband__text p { color: #5b6672; font-size: .95rem; max-width: 58ch; }
+@media (max-width: 720px) {
+  .callband__inner { flex-direction: column; align-items: stretch; text-align: center; padding: 1.3rem 1.2rem; }
+  .callband__inner .btn { align-self: stretch; }
+}
+
+/* ===== FAQ — тёмная ступень чередования (DARK-палитра) ===== */
+#faq.section--dark { background: #1b2026; }
+#faq .section__title { color: var(--text); }
+#faq .faq__item summary { color: var(--text); }
+#faq .faq__item { background: rgba(255,255,255,.04); border-color: var(--line); }
+#faq .faq__item[open] { box-shadow: 0 8px 22px rgba(0,0,0,.35); }
+#faq .faq__item p { color: var(--muted); }
+#faq .faq__item p b { color: var(--text); }
+#faq .faq__cta { background: rgba(255,255,255,.04); border-color: var(--line); border-left-color: var(--accent); color: var(--muted); box-shadow: none; }
+#faq .faq__cta a { color: var(--accent); border-bottom-color: rgba(255,122,26,.45); }
 .faq__list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .8rem; max-width: 860px; }
 .faq__item {
   background: #fff; border: 1px solid #e3e7ec;
@@ -437,6 +470,7 @@ main > .section:not(.section--dark) .section__subtitle { color: #5b6672; }
 
 /* ===== Contacts / Form ===== */
 .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+#contacts { background: linear-gradient(180deg, #1b2026 0%, var(--bg-2) 45%); }
 .contacts__info p { margin-bottom: .8rem; color: var(--muted); }
 .contacts__info a { color: var(--accent); }
 .form {
@@ -444,7 +478,7 @@ main > .section:not(.section--dark) .section__subtitle { color: #5b6672; }
   border-radius: var(--radius); padding: 2rem; display: flex; flex-direction: column; gap: 1rem;
 }
 .form h3 { font-size: 1.3rem; }
-.form input[type="text"], .form input[type="tel"], .form textarea {
+.form input[type="text"], .form input[type="tel"], .form input[type="email"], .form textarea {
   padding: .8rem 1rem; border-radius: 8px; border: 1px solid var(--line);
   background: var(--bg); color: var(--text); font-size: 1rem; font-family: inherit;
 }
